@@ -1,4 +1,4 @@
-# easy_avator_cropper
+# easy_image_cropper
 
 A simple image cropping widget that easily allows cropping avatars and other images. It ensures a consistent cropping experience on both iOS and Android.
 
@@ -8,7 +8,7 @@ A simple image cropping widget that easily allows cropping avatars and other ima
 ## Quick start 🚀
 1. Install this package.
     ```bash
-    flutter pub get easy_avator_cropper
+    flutter pub get easy_image_cropper
     ```
 
 ## Usage
