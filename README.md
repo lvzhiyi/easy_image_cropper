@@ -31,7 +31,6 @@ Center(
 Step 1: Create the Cropping UI
 Use the ImgCrop component to create the cropping UI. The size of the UI is determined by its parent container.
 ```dart
-复制代码
 ///...
 Center(
   child: ImgCrop(
