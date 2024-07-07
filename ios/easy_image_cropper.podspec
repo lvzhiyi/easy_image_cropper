@@ -2,7 +2,7 @@
 # To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html
 #
 Pod::Spec.new do |s|
-  s.name             = 'easy_avator_cropper'
+  s.name             = 'easy_image_cropper'
   s.version          = '0.0.1'
   s.summary          = 'A flutter plugin to crop image on iOS and Android.'
   s.description      = <<-DESC

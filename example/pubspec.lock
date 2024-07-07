@@ -73,7 +73,7 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.0.6"
-  easy_avator_cropper:
+  easy_image_cropper:
     dependency: "direct main"
     description:
       path: ".."

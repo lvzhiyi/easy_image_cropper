@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'dart:async';
 
-import 'package:easy_avator_cropper/easy_avator_cropper.dart';
+import 'package:easy_image_cropper/easy_image_cropper.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 

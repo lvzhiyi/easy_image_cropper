@@ -1,6 +1,6 @@
 # easy_avator_cropper
 
-A simple image cropping component that easily allows cropping avatars and other images. It ensures a consistent cropping experience on both iOS and Android.
+A simple image cropping widget that easily allows cropping avatars and other images. It ensures a consistent cropping experience on both iOS and Android.
 
 ![ios](https://github.com/lvzhiyi/easy_avator_cropper/raw/develop/ios.gif)
 ![android](https://github.com/lvzhiyi/easy_avator_cropper/raw/develop/android.gif)

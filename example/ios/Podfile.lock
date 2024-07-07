@@ -1,25 +1,25 @@
 PODS:
-  - easy_avator_cropper (0.0.1):
+  - easy_image_cropper (0.0.1):
     - Flutter
   - Flutter (1.0.0)
   - image_picker_ios (0.0.1):
     - Flutter
 
 DEPENDENCIES:
-  - easy_avator_cropper (from `.symlinks/plugins/easy_avator_cropper/ios`)
+  - easy_image_cropper (from `.symlinks/plugins/easy_image_cropper/ios`)
   - Flutter (from `Flutter`)
   - image_picker_ios (from `.symlinks/plugins/image_picker_ios/ios`)
 
 EXTERNAL SOURCES:
-  easy_avator_cropper:
-    :path: ".symlinks/plugins/easy_avator_cropper/ios"
+  easy_image_cropper:
+    :path: ".symlinks/plugins/easy_image_cropper/ios"
   Flutter:
     :path: Flutter
   image_picker_ios:
     :path: ".symlinks/plugins/image_picker_ios/ios"
 
 SPEC CHECKSUMS:
-  easy_avator_cropper: 70f9c0a20731748f36c011d4cff98ff157ddbb35
+  easy_image_cropper: 2b5e4bcc7cb53167309d6687f26d9838efeace7d
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
   image_picker_ios: c560581cceedb403a6ff17f2f816d7fea1421fc1
 
