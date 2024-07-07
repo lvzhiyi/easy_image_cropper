@@ -27,7 +27,6 @@ class ImageOptions {
 class ImageCrop {
   static const _channel =
       const MethodChannel('plugins.lykhonis.com/image_crop');
-
   static Future<bool> requestPermissions() {
     return _channel
         .invokeMethod('requestPermissions')
@@ -36,6 +35,7 @@ class ImageCrop {
 
   static Future<ImageOptions> getImageOptions({File? file}) async {
     assert(file != null);
+
     final result =
         await _channel.invokeMethod('getImageOptions', {'path': file?.path});
     return ImageOptions(

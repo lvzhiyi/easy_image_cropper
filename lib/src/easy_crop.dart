@@ -2,24 +2,48 @@ part of image_crop;
 
 const _kCropOverlayActiveOpacity = 0.3;
 const _kCropOverlayInactiveOpacity = 0.7;
-const _kCropHandleSize = 10.0;
+const _kCropHandleSize = 0.0;
 
 enum _CropAction { none, moving, cropping, scaling }
 
+enum ChipShape { circle, rect }
+
 class ImgCrop extends StatefulWidget {
   final ImageProvider image;
+
+  ///
+  /// Maximum scale value
   final double maximumScale;
+
+  ///
+  /// image error callback
   final ImageErrorListener? onImageError;
+
+  ///
+  /// Chip area size (in pixels)
   final double chipRadius;
-  final String chipShape;
-  const ImgCrop(
-      {Key? key,
-      required this.image,
-      this.maximumScale = 2.0,
-      this.onImageError,
-      this.chipRadius = 150,
-      this.chipShape = 'circle'})
-      : super(key: key);
+
+  ///
+  /// Chip shape (circle or rect)
+  final ChipShape chipShape;
+
+  ///
+  /// Chip shape (circle or rect)
+  final Color? stokenColor;
+
+  ///
+  ///
+  final double? stokenWidth;
+  const ImgCrop({
+    Key? key,
+    required this.image,
+    this.maximumScale = 2.0,
+    this.onImageError,
+    this.chipRadius = 150,
+    this.chipShape = ChipShape.circle,
+    this.stokenColor = Colors.white,
+    this.stokenWidth = 2,
+  }) : super(key: key);
 
   ImgCrop.file(File file,
       {Key? key,
@@ -27,7 +51,9 @@ class ImgCrop extends StatefulWidget {
       this.maximumScale = 2.0,
       this.onImageError,
       this.chipRadius = 150,
-      this.chipShape = 'circle'})
+      this.stokenColor = Colors.white,
+      this.stokenWidth = 2,
+      this.chipShape = ChipShape.circle})
       : image = FileImage(file, scale: scale),
         super(key: key);
 
@@ -39,7 +65,9 @@ class ImgCrop extends StatefulWidget {
     this.chipRadius = 150,
     this.maximumScale = 2.0,
     this.onImageError,
-    this.chipShape = 'circle',
+    this.stokenColor = Colors.white,
+    this.stokenWidth = 2,
+    this.chipShape = ChipShape.circle,
   })  : image = AssetImage(assetName, bundle: bundle, package: package),
         super(key: key);
 
@@ -166,6 +194,8 @@ class ImgCropState extends State<ImgCrop> with TickerProviderStateMixin {
         onScaleEnd: _isEnabled ? _handleScaleEnd : null,
         child: CustomPaint(
           painter: _CropPainter(
+              stokenColor: widget.stokenColor,
+              stokenWidth: widget.stokenWidth,
               image: _image,
               ratio: _ratio,
               view: _view,
@@ -363,7 +393,9 @@ class _CropPainter extends CustomPainter {
   final Rect area;
   final double scale;
   final double active;
-  final String chipShape;
+  final ChipShape chipShape;
+  final Color? stokenColor;
+  final double? stokenWidth;
 
   _CropPainter(
       {required this.image,
@@ -372,7 +404,9 @@ class _CropPainter extends CustomPainter {
       required this.area,
       required this.scale,
       required this.active,
-      required this.chipShape});
+      required this.chipShape,
+      this.stokenColor,
+      this.stokenWidth});
 
   @override
   bool shouldRepaint(_CropPainter oldDelegate) {
@@ -440,7 +474,7 @@ class _CropPainter extends CustomPainter {
     final _path1 = Path()
       ..addRect(Rect.fromLTRB(0.0, 0.0, rect.width, rect.height));
     Path _path2;
-    if (chipShape == 'rect') {
+    if (chipShape == ChipShape.rect) {
       _path2 = Path()..addRect(boundaries);
     } else {
       _path2 = Path()
@@ -456,10 +490,10 @@ class _CropPainter extends CustomPainter {
     canvas.drawRect(Rect.fromLTRB(0.0, 0.0, rect.width, rect.height), paint);
     paint
       ..isAntiAlias = true
-      ..color = Colors.white
-      ..strokeWidth = 2
+      ..color = stokenColor ?? Colors.white
+      ..strokeWidth = stokenWidth ?? 2
       ..style = PaintingStyle.stroke;
-    if (chipShape == 'rect') {
+    if (chipShape == ChipShape.rect) {
       canvas.drawRect(
           Rect.fromLTRB(boundaries.left - 1, boundaries.top - 1,
               boundaries.right + 1, boundaries.bottom + 1),

@@ -1,13 +1,15 @@
+import 'dart:ffi';
 import 'dart:io';
 import 'dart:async';
 
-import 'package:easy_avator_cropper/simple_image_crop.dart';
+import 'package:easy_avator_cropper/easy_avator_cropper.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 enum SheetType { gallery, camera }
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
@@ -59,14 +61,14 @@ class MyHomeRouteState extends State<MyHomeRoute> {
               children: <Widget>[
                 ListTile(
                   leading: const Icon(Icons.photo_camera),
-                  title: const Text("相机拍照"),
+                  title: const Text("photo camera"),
                   onTap: () async {
                     getImage(SheetType.camera);
                   },
                 ),
                 ListTile(
                   leading: const Icon(Icons.photo_library),
-                  title: const Text("相册选择"),
+                  title: const Text("photo library"),
                   onTap: () async {
                     getImage(SheetType.gallery);
                   },
@@ -140,9 +142,8 @@ class SimpleCropRouteState extends State<SimpleCropRoute> {
         body: Center(
           child: ImgCrop(
             key: cropKey,
-            // chipRadius: 100,
-            // chipShape: 'rect',
-            maximumScale: 3,
+            chipShape: ChipShape.circle,
+            maximumScale: 1,
             image: FileImage(File(img.path)),
           ),
         ),
