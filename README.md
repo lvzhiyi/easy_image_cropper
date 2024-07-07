@@ -12,22 +12,6 @@ A simple image cropping widget that easily allows cropping avatars and other ima
     ```
 
 ## Usage
-### Step 1: Create the Cropping UI
-Use the `ImgCrop` widget to create the cropping UI. The size of the UI is determined by its parent container.
-
-```dart
-///...
-Center(
-  child: ImgCrop(
-    key: cropKey,
-    chipShape: ChipShape.circle,
-    maximumScale: 1,
-    image: FileImage(File(img.path)),
-  ),
-)
-```
-
-## Usage
 Step 1: Create the Cropping UI
 Use the ImgCrop component to create the cropping UI. The size of the UI is determined by its parent container.
 ```dart
@@ -49,3 +33,6 @@ final crop = cropKey.currentState;
 final croppedFile = await crop.cropCompleted(File(img.path), pictureQuality: 900);
 ```
 `pictureQuality` represents the Size of the cropped image.
+
+## Future
+1. support web platform
