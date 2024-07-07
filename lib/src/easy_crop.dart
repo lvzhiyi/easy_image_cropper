@@ -154,8 +154,6 @@ class ImgCropState extends State<ImgCrop> with TickerProviderStateMixin {
   }
 
   Future<File> cropCompleted(File file, {required int pictureQuality}) async {
-    final options = await ImageCrop.getImageOptions(file: file);
-    debugPrint('image width: ${options.width}, height: ${options.height}');
     final sampleFile = await ImageCrop.sampleImage(
       file: file,
       preferredWidth: (pictureQuality / scale).round(),
@@ -166,13 +164,18 @@ class ImgCropState extends State<ImgCrop> with TickerProviderStateMixin {
       file: sampleFile,
       area: area,
     );
+
+    final imageBytes = await croppedFile.readAsBytes();
+
+    final image = img.decodeImage(imageBytes);
+    debugPrint('cropped img width: ${image!.width}, height: ${image.height}');
+
     return croppedFile;
   }
 
   void _getImage({bool force = true}) {
     _imageStream = widget.image.resolve(createLocalImageConfiguration(context));
     final oldImageStream = _imageStream;
-    print('_getImage ${_imageStream.key != oldImageStream.key || force}');
     if (_imageStream.key != oldImageStream.key || force) {
       _imageListener =
           ImageStreamListener(_updateImage, onError: widget.onImageError);
@@ -252,7 +255,6 @@ class ImgCropState extends State<ImgCrop> with TickerProviderStateMixin {
   }
 
   void _updateImage(ImageInfo imageInfo, bool synchronousCall) {
-    print('_updateImage');
     _image = imageInfo.image;
 
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {

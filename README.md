@@ -1,16 +1,35 @@
 # easy_avator_cropper
 
-A new Flutter project.
+一个简单的图片裁剪组件。可以很方便的完成裁剪头像等功能，并且让 iOS、Android 端的裁剪体验表现一致。
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+## Quick start 🚀
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+1. Install this package.
+    ```bash
+    flutter pub get easy_avator_cropper
+    ```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Usage
+### step1: 生成裁剪 UI
+使用 `ImgCrop` 组件生成裁剪的 UI 界面，至于尺寸大小，由你的父容器决定。
+```dart
+///...
+Center(
+  child: ImgCrop(
+    key: cropKey,
+    chipShape: ChipShape.circle,
+    maximumScale: 1,
+    image: FileImage(File(img.path)),
+  ),
+)
+```
+需要注意的是 `cropKey` 必须 `GlobalKey<ImgCropState>()`，否则后续裁剪组件无法正常工作。
+
+### step2: 获取裁剪后的图片
+```dart
+final crop = cropKey.currentState;
+final croppedFile = await crop.cropCompleted(File(img.path), pictureQuality: 900);
+```
+`pictureQuality` 代表你裁剪后图片的 `Size`.
