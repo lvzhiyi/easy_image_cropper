@@ -2,7 +2,8 @@
 
 一个简单的图片裁剪组件。可以很方便的完成裁剪头像等功能，并且让 iOS、Android 端的裁剪体验表现一致。
 
-
+![ios](./ios.jpg)
+![android](./android.jpg)
 
 ## Quick start 🚀
 
