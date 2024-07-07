@@ -2,8 +2,8 @@
 
 A simple image cropping component that easily allows cropping avatars and other images. It ensures a consistent cropping experience on both iOS and Android.
 
-![ios](./ios.gif)
-![android](./android.gif)
+![ios](https://github.com/lvzhiyi/easy_avator_cropper/raw/develop/ios.gif)
+![android](https://github.com/lvzhiyi/easy_avator_cropper/raw/develop/android.gif)
 
 ## Quick start 🚀
 
@@ -27,7 +27,34 @@ Center(
   ),
 )
 ```
-需要注意的是 `cropKey` 必须 `GlobalKey<ImgCropState>()`，否则后续裁剪组件无法正常工作。
+
+Easy Avatar Cropper
+A simple image cropping component that easily allows cropping avatars and other images. It ensures a consistent cropping experience on both iOS and Android.
+
+
+
+
+Quick Start 🚀
+Install the package.
+bash
+复制代码
+flutter pub get easy_avator_cropper
+Usage
+Step 1: Create the Cropping UI
+Use the ImgCrop component to create the cropping UI. The size of the UI is determined by its parent container.
+
+dart
+复制代码
+///...
+Center(
+  child: ImgCrop(
+    key: cropKey,
+    chipShape: ChipShape.circle,
+    maximumScale: 1,
+    image: FileImage(File(img.path)),
+  ),
+)
+Note that cropKey must be a GlobalKey<ImgCropState>(), otherwise the cropping component will not work properly.
 
 ### step2: Get the Cropped Image
 ```dart

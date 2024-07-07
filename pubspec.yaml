@@ -1,6 +1,6 @@
 name: easy_avator_cropper
 description: A simple and easy to use flutter plugin to crop image on iOS and Android.
-version: 1.0.0
+version: 1.0.1
 homepage: https://github.com/lvzhiyi/easy_avator_cropper.git
 
 environment:
