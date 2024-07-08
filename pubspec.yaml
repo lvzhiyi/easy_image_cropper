@@ -1,6 +1,6 @@
 name: easy_image_cropper
 description: A simple image cropping widget that easily allows cropping avatars and other images.
-version: 1.0.2
+version: 1.0.3
 tags:
     - avatar
     - cropper
@@ -10,7 +10,7 @@ tags:
 homepage: https://github.com/lvzhiyi/easy_avator_cropper.git
 
 environment:
-    sdk: '>=3.4.3 <4.0.0'
+    sdk: '>=3.4.0 <4.0.0'
     flutter: '>=3.3.0'
 
 dependencies:
